@@ -26,7 +26,7 @@ print(f"This is your generated password: {random_password}")
 
 
 '''
-#Random.choice doesn't include unique values where
+#Random.choice doesn't include unique values where as random.sample can be used to generate random value
 
 password = []
 password.extend(random.sample(letters,nr_letters))
