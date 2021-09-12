@@ -16,6 +16,9 @@ if __name__ == '__main__':
         user_state_input = screen.textinput(title=f"{len(guessed_state)}/50 States Correct",
                                             prompt="What's another state name").title()
         if user_state_input == "Exit":
+            states_to_learn = [state for state in state_file.state.to_list() if state not in guessed_state]
+            df = pandas.DataFrame({"states_to_learn": states_to_learn})
+            df.to_csv("states_to_learn.csv")
             break
         if user_state_input in state_file.state.to_list() and user_state_input not in guessed_state:
             guessed_state.append(user_state_input)
@@ -24,11 +27,7 @@ if __name__ == '__main__':
             turtle.write(state_data.state.item())
 
     # states that have not been guessed are put into a csv file for learning
-    states_to_learn = []
-    for state in state_file.state.to_list():
-        if state not in guessed_state:
-            states_to_learn.append(state)
 
-    df = pandas.DataFrame({"states_to_learn": states_to_learn})
-    df.to_csv("states_to_learn.csv")
+
+
 
