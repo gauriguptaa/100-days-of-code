@@ -6,6 +6,7 @@
 # (temp_c * 9/5) + 32 = temp_f
 # (temp_c * 9/5) + 32 = temp_f
 # Do NOT Create a dictionary directly. Try to use Dictionary Comprehension instead of a Loop.
+import pandas
 if __name__ == '__main__':
     weather_c = {
         "Monday": 12,
@@ -19,3 +20,11 @@ if __name__ == '__main__':
 
     weather_f = {key: ((value * (9 / 5)) + 32) for (key, value) in weather_c.items()}
     print(weather_f)
+
+# create a DataFrame using weather Fahrenheit data and loop though it
+    df = pandas.DataFrame(weather_f, index=[0])
+    for (index, row) in df.iterrows():
+        print(row.Monday)
+
+
+
